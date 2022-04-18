@@ -32,7 +32,7 @@ public class Groupe {
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "user_groupe",joinColumns = @JoinColumn(name = "id_groupe"),inverseJoinColumns = @JoinColumn(name = "id_user"))
-    private List<User> userList;
+    private List<UserDao> userDaoList;
 
     @JsonIgnoreProperties("groupeList")
     @ManyToOne

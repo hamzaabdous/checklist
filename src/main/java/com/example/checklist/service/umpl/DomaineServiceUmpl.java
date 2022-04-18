@@ -1,9 +1,7 @@
 package com.example.checklist.service.umpl;
 
 import com.example.checklist.model.Domaine;
-import com.example.checklist.model.User;
 import com.example.checklist.repository.domaineRepository;
-import com.example.checklist.repository.userRepository;
 import com.example.checklist.service.DomaineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

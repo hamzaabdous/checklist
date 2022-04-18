@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -30,19 +29,19 @@ public class Damage  {
 
     @JsonIgnoreProperties("damageUserDeclaration")
     @ManyToOne
-    private User userDeclaration;
+    private UserDao userDaoDeclaration;
 
     @JsonIgnoreProperties("damageUserReceiving")
     @ManyToOne
-    private User userReceiving;
+    private UserDao userDaoReceiving;
 
     @JsonIgnoreProperties("damageUserReparation")
     @ManyToOne
-    private User userReparation;
+    private UserDao userDaoReparation;
 
     @JsonIgnoreProperties("damageUserClosed")
     @ManyToOne
-    private User userClosed;
+    private UserDao userDaoClosed;
 
     @Column(name="description")
     private String description;

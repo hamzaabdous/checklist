@@ -1,7 +1,6 @@
 package com.example.checklist.service.umpl;
 
 import com.example.checklist.model.Role;
-import com.example.checklist.model.User;
 import com.example.checklist.repository.roleRepository;
 import com.example.checklist.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

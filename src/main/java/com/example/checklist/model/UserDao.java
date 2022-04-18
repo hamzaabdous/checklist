@@ -1,12 +1,12 @@
 package com.example.checklist.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -17,14 +17,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class User{
+public class UserDao implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="username")
+    private String username;
 
     @Column(name="email")
     private String email;
@@ -47,23 +47,48 @@ public class User{
     private Role role;
 
     @JsonIgnoreProperties("userDeclaration")
-    @OneToMany(mappedBy = "userDeclaration",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userDaoDeclaration",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserDeclaration;
 
     @JsonIgnoreProperties("userReceiving")
-    @OneToMany(mappedBy = "userReceiving",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userDaoReceiving",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserReceiving;
 
     @JsonIgnoreProperties("userReparation")
-    @OneToMany(mappedBy = "userReparation",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userDaoReparation",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserReparation;
 
     @JsonIgnoreProperties("userClosed")
-    @OneToMany(mappedBy = "userClosed",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userDaoClosed",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserClosed;
 
     @JsonIgnoreProperties("userList")
     @ManyToMany
     @JoinTable(name = "user_groupe",joinColumns = @JoinColumn(name = "id_user"),inverseJoinColumns = @JoinColumn(name = "id_groupe"))
     private List<Groupe> groupeList;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

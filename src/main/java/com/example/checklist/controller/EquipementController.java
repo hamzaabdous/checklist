@@ -17,7 +17,7 @@ public class EquipementController {
 
     @PostMapping("/add")
     public Optional<Equipement> domaineSave(@RequestBody Equipement equipement){
-        //  Optional<User> userCreated=userService.userSave(user);
+        //  Optional<UserDao> userCreated=userService.userSave(user);
         return equipementService.EquipementSave(equipement);
     }
 

@@ -1,7 +1,6 @@
 package com.example.checklist.service;
 
 import com.example.checklist.model.Role;
-import com.example.checklist.model.User;
 
 import java.util.List;
 import java.util.Optional;

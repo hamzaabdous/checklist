@@ -1,6 +1,6 @@
 package com.example.checklist.controller;
 
-import com.example.checklist.model.User;
+import com.example.checklist.model.UserDao;
 import com.example.checklist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,16 +15,17 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public Optional<User> add(@RequestBody User user){
-      //  Optional<User> userCreated=userService.userSave(user);
-        return userService.userSave(user);
+    public Optional<UserDao> add(@RequestBody UserDao userDao){
+      //  Optional<UserDao> userCreated=userService.userSave(userDao);
+        userDao.setPassword("123");
+        return userService.userSave(userDao);
 
     }
 
     @GetMapping("/")
-    public List<User> findAll(){
-        List<User> users= userService.findAll();
-        return users;
+    public List<UserDao> findAll(){
+        List<UserDao> userDaos = userService.findAll();
+        return userDaos;
     }
 
     @PostMapping("/delete/{id}")
@@ -33,8 +34,8 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public User UpdateUser(@RequestBody User user){
-        return userService.UpdateUser(user, user.getId());
+    public UserDao UpdateUser(@RequestBody UserDao userDao){
+        return userService.UpdateUser(userDao, userDao.getId());
     }
 
     @GetMapping("/count")

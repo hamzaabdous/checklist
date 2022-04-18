@@ -1,13 +1,10 @@
 package com.example.checklist.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -29,7 +26,7 @@ public class Role  {
 
     @JsonIgnoreProperties("role")
     @OneToMany(mappedBy = "role",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<User> users;
+    private List<UserDao> userDaos;
 
     @JsonIgnoreProperties("roles")
     @ManyToOne

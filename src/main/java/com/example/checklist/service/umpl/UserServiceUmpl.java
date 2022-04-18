@@ -1,6 +1,6 @@
 package com.example.checklist.service.umpl;
 
-import com.example.checklist.model.User;
+import com.example.checklist.model.UserDao;
 import com.example.checklist.repository.userRepository;
 import com.example.checklist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +16,16 @@ public class UserServiceUmpl implements UserService {
     private userRepository userRepository;
 
     @Override
-    public Optional<User> userSave(User user) {
-        Optional<User> userO = Optional.ofNullable(userRepository.save(user));
+    public Optional<UserDao> userSave(UserDao userDao) {
+        Optional<UserDao> userO = Optional.ofNullable(userRepository.save(userDao));
         return userO;
     }
 
     @Override
-    public List<User> findAll() {
-        List<User> userO =  userRepository.findAll();
+    public List<UserDao> findAll() {
+        List<UserDao> userDaoO =  userRepository.findAll();
 
-        return userO;
+        return userDaoO;
     }
 
     @Override
@@ -34,8 +34,8 @@ public class UserServiceUmpl implements UserService {
     }
 
     @Override
-    public User UpdateUser(User user, int id) {
-        return userRepository.save(user);
+    public UserDao UpdateUser(UserDao userDao, int id) {
+        return userRepository.save(userDao);
     }
 
     @Override
