@@ -2,10 +2,15 @@ package com.example.checklist.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,9 +28,26 @@ public class UserDao implements UserDetails {
     @Column(name="id")
     private int id;
 
+    @NotNull(message = "username null")
+    @NotBlank(message = "saisir votre username")
+    @Size(min = 3, message = "username  must have at least 3 characters")
     @Column(name="username")
     private String username;
 
+    @NotNull(message = "lastName null")
+    @Size(min = 3, message = "lastName  must have at least 3 characters")
+    @NotBlank(message = "saisir votre lastName")
+    @Column(name = "lastName")
+    private String lastName;
+
+    @NotNull(message = "firstName null")
+    @Size(min = 3, message = "firstName  must have at least 3 characters")
+    @NotBlank(message = "saisir votre firstName")
+    @Column(name = "firstName")
+    private String firstName;
+
+
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
     @Column(name="email")
     private String email;
 
@@ -35,30 +57,29 @@ public class UserDao implements UserDetails {
     @Column(name="phone_Number")
     private String phoneNumber;
 
+
     @Column(name="created_Date")
     private String createdDate;
-
     @Column(name="update_Date")
     private String updateDate;
 
-    //  @JoinColumn(name = "id_user")
-    @JsonIgnoreProperties("users")
-    @ManyToOne
+    @JsonIgnoreProperties("userDaos")
+    @ManyToOne()
     private Role role;
 
-    @JsonIgnoreProperties("userDeclaration")
+    @JsonIgnoreProperties("userDaoDeclaration")
     @OneToMany(mappedBy = "userDaoDeclaration",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserDeclaration;
 
-    @JsonIgnoreProperties("userReceiving")
+    @JsonIgnoreProperties("userDaoReceiving")
     @OneToMany(mappedBy = "userDaoReceiving",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserReceiving;
 
-    @JsonIgnoreProperties("userReparation")
+    @JsonIgnoreProperties("userDaoReparation")
     @OneToMany(mappedBy = "userDaoReparation",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserReparation;
 
-    @JsonIgnoreProperties("userClosed")
+    @JsonIgnoreProperties("userDaoClosed")
     @OneToMany(mappedBy = "userDaoClosed",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageUserClosed;
 

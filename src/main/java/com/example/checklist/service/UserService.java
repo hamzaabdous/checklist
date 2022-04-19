@@ -11,5 +11,6 @@ public interface UserService {
     public void DeleteId(Long id);
     public UserDao UpdateUser(UserDao userDao, int id);
     public long countUsers();
-
+    public UserDao changePassword(UserDao userDao,int id);
+    public Optional<UserDao> findById(Long id);
 }

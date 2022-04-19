@@ -16,9 +16,11 @@ public class UserController {
 
     @PostMapping("/add")
     public Optional<UserDao> add(@RequestBody UserDao userDao){
-      //  Optional<UserDao> userCreated=userService.userSave(userDao);
         userDao.setPassword("123");
-        return userService.userSave(userDao);
+
+        Optional<UserDao> userCreated=userService.userSave(userDao);
+        System.out.println(userDao);
+        return userCreated;
 
     }
 
@@ -38,6 +40,11 @@ public class UserController {
         return userService.UpdateUser(userDao, userDao.getId());
     }
 
+    @PutMapping("/passwordChange")
+    public UserDao changePassword(@RequestBody UserDao userDao)
+    {
+            return userService.changePassword(userDao,userDao.getId());
+    }
     @GetMapping("/count")
     public Long countUsers(){
         return userService.countUsers();

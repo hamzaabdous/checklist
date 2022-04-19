@@ -41,4 +41,8 @@ public class Groupe {
     @JsonIgnoreProperties("groupe")
     @OneToMany(mappedBy = "groupe",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Equipement> equipementList;
+
+    @JsonIgnoreProperties("group")
+    @OneToMany(mappedBy = "group",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<DamageType> damageTypeList;
 }

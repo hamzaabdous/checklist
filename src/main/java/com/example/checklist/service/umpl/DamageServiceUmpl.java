@@ -19,13 +19,15 @@ public class DamageServiceUmpl implements DamageService {
     @Override
     public Optional<Damage> DamageSave(Damage damage) {
         Optional<Damage> Damage = Optional.ofNullable(damageRepository.save(damage));
-        return Damage;    }
+        return Damage;
+    }
 
     @Override
     public List<Damage> findAll() {
         List<Damage> Damage =  damageRepository.findAll();
 
-        return Damage;    }
+        return Damage;
+    }
 
     @Override
     public void DeleteId(Long id) {

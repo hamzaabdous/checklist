@@ -59,4 +59,8 @@ public class Damage  {
     @OneToOne
     @JoinColumn(name="equipement_id")
     private Equipement equipement;
+
+    @JsonIgnoreProperties("damageList")
+    @ManyToOne
+    private DamageType damageType;
 }
