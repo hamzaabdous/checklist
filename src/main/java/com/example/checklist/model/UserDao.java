@@ -26,7 +26,7 @@ public class UserDao implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @NotNull(message = "username null")
     @NotBlank(message = "saisir votre username")

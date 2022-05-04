@@ -9,8 +9,8 @@ public interface UserService {
     public Optional<UserDao> userSave (UserDao userDao);
     public List<UserDao> findAll();
     public void DeleteId(Long id);
-    public UserDao UpdateUser(UserDao userDao, int id);
+    public UserDao UpdateUser(UserDao userDao, Long id);
     public long countUsers();
-    public UserDao changePassword(UserDao userDao,int id);
+    public UserDao changePassword(UserDao userDao, Long id);
     public Optional<UserDao> findById(Long id);
 }

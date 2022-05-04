@@ -23,7 +23,7 @@ public class UserController {
         return userCreated;
 
     }
-
+    @CrossOrigin
     @GetMapping("/")
     public List<UserDao> findAll(){
         List<UserDao> userDaos = userService.findAll();

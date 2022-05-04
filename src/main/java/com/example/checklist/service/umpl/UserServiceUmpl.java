@@ -38,7 +38,7 @@ public class UserServiceUmpl implements UserService {
     }
 
     @Override
-    public UserDao UpdateUser(UserDao userDao, int id) {
+    public UserDao UpdateUser(UserDao userDao, Long id) {
 
         return userRepository.save(userDao);
     }
@@ -49,7 +49,7 @@ public class UserServiceUmpl implements UserService {
     }
 
     @Override
-    public UserDao changePassword(UserDao userDao,int id) {
+    public UserDao changePassword(UserDao userDao, Long id) {
         userDao.setPassword(bcryptEncoder.encode(userDao.getPassword()));
         return userRepository.save(userDao);
     }
