@@ -38,11 +38,11 @@ public class JwtAuthenticationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
-	@PostMapping("/register")
-	public ResponseEntity<?> saveUser(@RequestBody UserDto user) throws Exception {
-		user.setPassword("123");
-		return ResponseEntity.ok(userDetailsService.save(user));
-	}
+//	@PostMapping("/register")
+	//public ResponseEntity<?> saveUser(@RequestBody UserDto user) throws Exception {
+	//	user.setPassword("123");
+	//	return ResponseEntity.ok(userDetailsService.save(user));
+	//}
 
 	private void authenticate(String username, String password) throws Exception {
 		try {

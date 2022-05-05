@@ -31,10 +31,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 				new ArrayList<>());
 	}
 
-	public UserDao save(UserDto user) {
+	public UserDao save(UserDao user) {
 		UserDao newUserDao = new UserDao();
-		newUserDao.setUsername(user.getUsername());
 		newUserDao.setPassword(bcryptEncoder.encode(user.getPassword()));
-		return userDao.save(newUserDao);
+		user.setPassword(newUserDao.getPassword());
+		return userDao.save(user);
 	}
 }

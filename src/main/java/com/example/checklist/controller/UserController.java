@@ -1,6 +1,7 @@
 package com.example.checklist.controller;
 
 import com.example.checklist.model.UserDao;
+import com.example.checklist.service.JwtUserDetailsService;
 import com.example.checklist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +14,14 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private JwtUserDetailsService userDetailsService;
     @PostMapping("/add")
-    public Optional<UserDao> add(@RequestBody UserDao userDao){
+    public UserDao add(@RequestBody UserDao userDao){
         userDao.setPassword("123");
 
-        Optional<UserDao> userCreated=userService.userSave(userDao);
         System.out.println(userDao);
-        return userCreated;
+        return userDetailsService.save(userDao);
 
     }
     @CrossOrigin
