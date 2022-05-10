@@ -1,8 +1,6 @@
 package com.example.checklist.service.umpl;
 
-import com.example.checklist.model.Domaine;
 import com.example.checklist.model.Groupe;
-import com.example.checklist.repository.domaineRepository;
 import com.example.checklist.repository.groupeRepository;
 import com.example.checklist.service.GroupeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,7 @@ public class GroupeServiceUmpl implements GroupeService {
     }
 
     @Override
-    public Groupe UpdateGroupe(Groupe groupe, int id) {
+    public Groupe UpdateGroupe(Groupe groupe, Long id) {
         return groupeRepository.save(groupe);
     }
 

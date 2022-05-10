@@ -1,10 +1,7 @@
 package com.example.checklist.service.umpl;
 
-import com.example.checklist.model.Damage;
 import com.example.checklist.model.DamageType;
-import com.example.checklist.repository.damageRepository;
 import com.example.checklist.repository.damageTypeRepository;
-import com.example.checklist.service.DamageService;
 import com.example.checklist.service.DamageTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +36,7 @@ public class DamageTypeServiceUmpl implements DamageTypeService {
     }
 
     @Override
-    public DamageType UpdateDamageType(DamageType damageType, int id) {
+    public DamageType UpdateDamageType(DamageType damageType, Long id) {
         return damageTypeRepository.save(damageType);
     }
 

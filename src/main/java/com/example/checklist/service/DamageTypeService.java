@@ -9,6 +9,6 @@ public interface DamageTypeService {
     public Optional<DamageType> DamageTypeSave (DamageType damageType );
     public List<DamageType> findAll();
     public void DeleteId(Long id);
-    public DamageType UpdateDamageType(DamageType damageType, int id);
+    public DamageType UpdateDamageType(DamageType damageType, Long id);
     public long countDamageType();
 }

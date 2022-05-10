@@ -6,6 +6,7 @@ import com.example.checklist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +20,18 @@ public class UserController {
     @PostMapping("/add")
     public UserDao add(@RequestBody UserDao userDao){
         userDao.setPassword("123");
+        Date currentDate = new Date();
+        //   LocalDateTime myDateObj = LocalDateTime.now();
 
-        System.out.println(userDao);
+//        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        //    String formattedDate = myDateObj.format(myFormatObj);
+
+        userDao.setCreatedDate(currentDate);
+
+
+        System.out.println("date");
+        System.out.println(currentDate);
         return userDetailsService.save(userDao);
 
     }

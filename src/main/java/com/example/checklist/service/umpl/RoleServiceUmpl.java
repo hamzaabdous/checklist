@@ -30,7 +30,7 @@ public class RoleServiceUmpl implements RoleService {
     }
 
     @Override
-    public Role UpdateRole(Role role, int id) {
+    public Role UpdateRole(Role role, Long id) {
         return roleRepository.save(role);
     }
 

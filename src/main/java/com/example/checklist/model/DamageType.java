@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name="damageTypeRepository")
+@Table(name="damageType")
 @Data
 @Getter
 @Setter
@@ -19,7 +19,7 @@ public class DamageType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @NotNull(message = "name null")
     @NotBlank(message = "saisir votre name")
@@ -30,7 +30,7 @@ public class DamageType {
     @ManyToOne
     private Groupe group;
 
-    @JsonIgnoreProperties("damageTypeRepository")
+    @JsonIgnoreProperties("damageType")
     @OneToMany(mappedBy = "damageType",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Damage> damageList;
 }

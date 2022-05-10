@@ -9,6 +9,6 @@ public interface RoleService {
     public Optional<Role> roleSave (Role role);
     public List<Role> findAll();
     public void DeleteId(Long id);
-    public Role UpdateRole(Role role,int id);
+    public Role UpdateRole(Role role, Long id);
     public long countRoles();
 }

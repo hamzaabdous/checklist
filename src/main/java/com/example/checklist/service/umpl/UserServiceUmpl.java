@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +23,7 @@ public class UserServiceUmpl implements UserService {
     private PasswordEncoder bcryptEncoder;
     @Override
     public Optional<UserDao> userSave(UserDao userDao) {
+
         userDao.setPassword(bcryptEncoder.encode(userDao.getPassword()));
 
         Optional<UserDao> userO = Optional.ofNullable(userRepository.save(userDao));
@@ -39,7 +44,8 @@ public class UserServiceUmpl implements UserService {
 
     @Override
     public UserDao UpdateUser(UserDao userDao, Long id) {
-
+        Date currentDate = new Date();
+        userDao.setUpdateDate(currentDate);
         return userRepository.save(userDao);
     }
 

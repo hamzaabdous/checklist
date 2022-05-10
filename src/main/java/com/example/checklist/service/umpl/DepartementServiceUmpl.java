@@ -36,7 +36,7 @@ public class DepartementServiceUmpl implements DepartementService {
     }
 
     @Override
-    public Departement UpdateDepartement(Departement departement, int id) {
+    public Departement UpdateDepartement(Departement departement, Long id) {
         return departementRepository.save(departement);
     }
 

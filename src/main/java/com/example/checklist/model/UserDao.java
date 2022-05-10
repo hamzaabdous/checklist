@@ -2,7 +2,7 @@ package com.example.checklist.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.validator.constraints.Email;
+import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,7 +11,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -35,13 +38,11 @@ public class UserDao implements UserDetails {
     private String username;
 
     @NotNull(message = "lastName null")
-    @Size(min = 3, message = "lastName  must have at least 3 characters")
     @NotBlank(message = "saisir votre lastName")
     @Column(name = "lastName")
     private String lastName;
 
     @NotNull(message = "firstName null")
-    @Size(min = 3, message = "firstName  must have at least 3 characters")
     @NotBlank(message = "saisir votre firstName")
     @Column(name = "firstName")
     private String firstName;
@@ -57,11 +58,12 @@ public class UserDao implements UserDetails {
     @Column(name="phone_Number")
     private String phoneNumber;
 
-
+    @Nullable
     @Column(name="created_Date")
-    private String createdDate;
+    private Date createdDate;
+    @Nullable
     @Column(name="update_Date")
-    private String updateDate;
+    private Date updateDate;
 
     @JsonIgnoreProperties("userDaos")
     @ManyToOne()

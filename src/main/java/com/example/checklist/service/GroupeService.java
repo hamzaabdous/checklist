@@ -9,6 +9,6 @@ public interface GroupeService {
     public Optional<Groupe> groupeSave (Groupe groupe );
     public List<Groupe> findAllGroupes();
     public void DeleteIdGroupe(Long id);
-    public Groupe UpdateGroupe(Groupe groupe,int id);
+    public Groupe UpdateGroupe(Groupe groupe, Long id);
     public long countGroupe();
 }
