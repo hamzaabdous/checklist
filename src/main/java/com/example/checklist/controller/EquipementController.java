@@ -1,6 +1,5 @@
 package com.example.checklist.controller;
 
-import com.example.checklist.model.Domaine;
 import com.example.checklist.model.Equipement;
 import com.example.checklist.service.EquipementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class EquipementController {
     private EquipementService equipementService;
 
     @PostMapping("/add")
-    public Optional<Equipement> domaineSave(@RequestBody Equipement equipement){
+    public Optional<Equipement> domainSave(@RequestBody Equipement equipement){
         //  Optional<UserDao> userCreated=userService.userSave(user);
         return equipementService.EquipementSave(equipement);
     }
@@ -33,12 +32,12 @@ public class EquipementController {
     }
 
     @PutMapping("/update")
-    public Equipement UpdateDomaine(@RequestBody Equipement equipement){
+    public Equipement UpdateDomain(@RequestBody Equipement equipement){
         return equipementService.UpdateEquipement(equipement, equipement.getId());
     }
 
     @GetMapping("/count")
-    public Long countDomaine(){
+    public Long countDomain(){
         return equipementService.countEquipement();
     }
 }

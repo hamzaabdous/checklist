@@ -36,7 +36,7 @@ public class Groupe {
 
     @JsonIgnoreProperties("groupeList")
     @ManyToOne
-    private Domaine domaine;
+    private Domain domain;
 
     @JsonIgnoreProperties("groupe")
     @OneToMany(mappedBy = "groupe",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

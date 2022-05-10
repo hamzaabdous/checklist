@@ -8,13 +8,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="domaine")
+@Table(name="domain")
 @Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Domaine {
+public class Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -23,7 +23,7 @@ public class Domaine {
     @Column(name="name")
     private String name;
 
-    @JsonIgnoreProperties("domaine")
-    @OneToMany(mappedBy = "domaine",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("domain")
+    @OneToMany(mappedBy = "domain",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Groupe> groupeList;
 }

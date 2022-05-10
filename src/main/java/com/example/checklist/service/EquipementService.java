@@ -1,6 +1,5 @@
 package com.example.checklist.service;
 
-import com.example.checklist.model.Domaine;
 import com.example.checklist.model.Equipement;
 
 import java.util.List;

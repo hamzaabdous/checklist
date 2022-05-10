@@ -10,21 +10,21 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Damages")
-public class DamageController {
+@RequestMapping("/domains")
+public class DomainController {
     @Autowired
     private DomainService domainService;
 
     @PostMapping("/add")
-    public Optional<Domain> add(@RequestBody Domain domain){
+    public Optional<Domain> domainSave(@RequestBody Domain domain){
         //  Optional<UserDao> userCreated=userService.userSave(user);
         return domainService.domainSave(domain);
     }
 
     @GetMapping("/")
     public List<Domain> findAll(){
-        List<Domain> Domain = domainService.findAll();
-        return Domain;
+        List<Domain> domain = domainService.findAll();
+        return domain;
     }
 
     @PostMapping("/delete/{id}")
@@ -33,12 +33,12 @@ public class DamageController {
     }
 
     @PutMapping("/update")
-    public Domain UpdateDepartement(@RequestBody Domain domain){
+    public Domain UpdateDomain(@RequestBody Domain domain){
         return domainService.UpdateDomain(domain, domain.getId());
     }
 
     @GetMapping("/count")
-    public Long countDepartement(){
+    public Long countDomain(){
         return domainService.countDomain();
     }
 }

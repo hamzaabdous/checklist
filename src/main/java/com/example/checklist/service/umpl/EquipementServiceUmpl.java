@@ -1,7 +1,6 @@
 package com.example.checklist.service.umpl;
 
 import com.example.checklist.model.Equipement;
-import com.example.checklist.repository.domaineRepository;
 import com.example.checklist.repository.equipementRepository;
 import com.example.checklist.service.EquipementService;
 import org.springframework.beans.factory.annotation.Autowired;
